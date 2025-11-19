@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "HLfdHJOftzo=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\74838\\source\\repos\\EscolaManager\\src\\EscolaManager.API\\EscolaManager.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\74838\\.nuget\\packages\\fluentvalidation\\12.1.0\\fluentvalidation.12.1.0.nupkg.sha512",
+    "C:\\Users\\74838\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.1.0\\fluentvalidation.dependencyinjectionextensions.12.1.0.nupkg.sha512",
+    "C:\\Users\\74838\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
+    "C:\\Users\\74838\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.8\\microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
+    "C:\\Users\\74838\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\74838\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1107",
+      "level": "Error",
+      "message": "Conflito de versão detectado para MediatR. Instale/referencie MediatR 13.1.0 diretamente no projeto EscolaManager.API para resolver esse problema. \r\n EscolaManager.API -> EscolaManager.Application -> MediatR (>= 13.1.0) \r\n EscolaManager.API -> MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 -> MediatR (>= 11.0.0 && < 12.0.0).",
+      "projectPath": "C:\\Users\\74838\\source\\repos\\EscolaManager\\src\\EscolaManager.API\\EscolaManager.API.csproj",
+      "filePath": "C:\\Users\\74838\\source\\repos\\EscolaManager\\src\\EscolaManager.API\\EscolaManager.API.csproj",
+      "libraryId": "MediatR",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
+}
