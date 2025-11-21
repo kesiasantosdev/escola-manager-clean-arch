@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EscolaManager.Domain.Entities
+﻿namespace EscolaManager.Domain.Entities
 {
     public class Pessoa
     {

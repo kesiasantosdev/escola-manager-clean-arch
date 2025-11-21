@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EscolaManager.Domain.Entities
+﻿namespace EscolaManager.Domain.Entities
 {
     public class TipoPergunta
     {
@@ -26,7 +20,7 @@ namespace EscolaManager.Domain.Entities
             EscolaId = escolaId;
         }
 
-        protected TipoPergunta() 
+        protected TipoPergunta()
         {
             Nome = string.Empty;
         }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EscolaManager.Domain.Entities
+﻿namespace EscolaManager.Domain.Entities
 {
     public class Bimestre
     {
@@ -43,9 +37,9 @@ namespace EscolaManager.Domain.Entities
             MostrarResultadosAoAvaliado = true;
         }
 
-        protected Bimestre() 
+        protected Bimestre()
         {
-            Titulo = string.Empty; 
+            Titulo = string.Empty;
         }
     }
 }
