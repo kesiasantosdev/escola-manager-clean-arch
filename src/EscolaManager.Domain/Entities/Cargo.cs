@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EscolaManager.Domain.Entities
 {
@@ -10,8 +8,12 @@ namespace EscolaManager.Domain.Entities
     {
         public Guid Id { get; private set; }
         public string NomeCargo { get; private set; }
+
         public Guid EscolaId { get; private set; }
         public virtual Escola? Escola { get; private set; }
+
+        private readonly List<Permissao> _permissoes = new();
+        public virtual IReadOnlyCollection<Permissao> Permissoes => _permissoes;
 
         public Cargo(string nomeCargo, Guid escolaId)
         {
@@ -24,6 +26,19 @@ namespace EscolaManager.Domain.Entities
             Id = Guid.NewGuid();
             NomeCargo = nomeCargo;
             EscolaId = escolaId;
+        }
+
+        public void AdicionarPermissao(Permissao permissao)
+        {
+            if (_permissoes.Any(p => p.Id == permissao.Id))
+                return;
+
+            _permissoes.Add(permissao);
+        }
+
+        public void RemoverPermissao(Permissao permissao)
+        {
+            _permissoes.Remove(permissao);
         }
 
         public void AlterarNome(string novoNome)
