@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EscolaManager.Domain.Entities
+﻿namespace EscolaManager.Domain.Entities
 {
     public class TipoResposta
     {
@@ -13,7 +7,7 @@ namespace EscolaManager.Domain.Entities
         public Guid EscolaId { get; private set; }
         public virtual Escola? Escola { get; private set; }
 
-        public TipoResposta (string nome, Guid escolaId)
+        public TipoResposta(string nome, Guid escolaId)
         {
             if (string.IsNullOrWhiteSpace(nome))
                 throw new ArgumentException("O nome do tipo de resposta é obrigatório", nameof(nome));
@@ -26,7 +20,7 @@ namespace EscolaManager.Domain.Entities
             EscolaId = escolaId;
         }
 
-        protected TipoResposta () 
+        protected TipoResposta()
         {
             Nome = string.Empty;
         }

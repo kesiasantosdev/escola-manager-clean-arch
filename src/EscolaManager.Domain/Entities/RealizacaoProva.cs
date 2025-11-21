@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EscolaManager.Domain.Entities
+﻿namespace EscolaManager.Domain.Entities
 {
     public class RealizacaoProva
     {
@@ -19,7 +13,7 @@ namespace EscolaManager.Domain.Entities
         public virtual Usuario? Avaliado { get; private set; }
 
         public TipoRelacao TipoRelacao { get; private set; }
-        public StatusRealizacao Status {  get; private set; }
+        public StatusRealizacao Status { get; private set; }
 
         public RealizacaoProva(Guid bimestreId, Guid provaId, Guid avaliadorId, Guid avaliadoId, TipoRelacao tipoRelacao)
         {
