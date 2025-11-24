@@ -1,13 +1,10 @@
 using EscolaManager.Application;
-using EscolaManager.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore;
+using EscolaManager.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
-builder.Services.AddDbContext<EscolaDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddMediatR(cfg => 
 {

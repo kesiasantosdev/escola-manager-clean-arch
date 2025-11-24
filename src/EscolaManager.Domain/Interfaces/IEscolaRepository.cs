@@ -1,12 +1,12 @@
 ﻿using EscolaManager.Domain.Entities;
 
-namespace EscolaManager.Domain.Interface
+namespace EscolaManager.Domain.Interfaces
 {
     public interface IEscolaRepository
     {
         Task AdicionarAsync(Escola escola);
         Task<Escola?> ObterPorIdAsync(Guid id);
-        Task<IEnumerable<Escola>> ObterTodasAsync();
+        Task<IEnumerable<Escola>> ObterTodosAsync();
         Task AtualizarAsync(Escola escola);
         Task DeletarAsync(Escola escola);
     }

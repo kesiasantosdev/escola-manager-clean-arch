@@ -1,6 +1,6 @@
 ﻿using EscolaManager.Domain.Entities;
 
-namespace EscolaManager.Domain.Interface
+namespace EscolaManager.Domain.Interfaces
 {
     public interface IRealizacaoProvaRepository
     {

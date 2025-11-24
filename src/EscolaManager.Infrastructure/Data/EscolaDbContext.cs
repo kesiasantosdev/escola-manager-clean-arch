@@ -1,11 +1,6 @@
 ﻿using EscolaManager.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EscolaManager.Infrastructure.Data
 {
@@ -21,12 +16,12 @@ namespace EscolaManager.Infrastructure.Data
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Permissao> Permissoes { get; set; }
         public DbSet<TipoPergunta> TiposPerguntas { get; set; }
-        public DbSet<TipoResposta> TiposRespostas { get;set; }
+        public DbSet<TipoResposta> TiposRespostas { get; set; }
         public DbSet<Pergunta> Perguntas { get; set; }
-        public DbSet<Prova> Provas {  get; set; }
+        public DbSet<Prova> Provas { get; set; }
         public DbSet<Bimestre> Bimestres { get; set; }
         public DbSet<RealizacaoProva> RealizacoesProvas { get; set; }
-        public DbSet<Resposta> Respostas { get;set; }
+        public DbSet<Resposta> Respostas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
