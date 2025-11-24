@@ -5,7 +5,7 @@ namespace EscolaManager.Domain.Interfaces
     public interface ITipoRespostaRepository
     {
         Task AdicionarAsync(TipoResposta tipoResposta);
-        Task<TipoResposta?> ObterPorId(Guid id);
-        Task<IEnumerable<TipoResposta>> ObterTodos();
+        Task<TipoResposta?> ObterPorIdAsync(Guid id);
+        Task<IEnumerable<TipoResposta>> ObterTodosAsync();
     }
 }

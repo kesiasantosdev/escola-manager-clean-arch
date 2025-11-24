@@ -33,9 +33,9 @@ namespace EscolaManager.Infrastructure.Data.Configurations
 
             // 4. AUTO-RELACIONAMENTO (Chefe)
             builder.HasOne(u => u.Superior)
-                .WithMany() 
+                .WithMany()
                 .HasForeignKey(u => u.SuperiorId)
-                .IsRequired(false) 
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

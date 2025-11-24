@@ -14,13 +14,13 @@ namespace EscolaManager.Infrastructure.Data.Configurations
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.NomeCargo)
-                .HasMaxLength(100) 
-                .IsRequired(); 
+                .HasMaxLength(100)
+                .IsRequired();
 
             builder.HasOne(c => c.Escola)
                 .WithMany()
                 .HasForeignKey(c => c.EscolaId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(c => c.Permissoes)
                 .WithMany()
