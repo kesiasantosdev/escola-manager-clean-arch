@@ -17,7 +17,6 @@ namespace EscolaManager.Infrastructure.Data.Configurations
                 .HasMaxLength(100) 
                 .IsRequired(); 
 
-            // 4. O Relacionamento com Escola (1:N)
             builder.HasOne(c => c.Escola)
                 .WithMany()
                 .HasForeignKey(c => c.EscolaId)
