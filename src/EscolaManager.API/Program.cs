@@ -1,8 +1,14 @@
 using EscolaManager.Application;
+using EscolaManager.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
+builder.Services.AddDbContext<EscolaDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
 builder.Services.AddMediatR(cfg => 
 {
     // Usa o tipo de alguma classe na camada Application para obter o Assembly
