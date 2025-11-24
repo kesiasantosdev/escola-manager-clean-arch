@@ -1,5 +1,5 @@
 ﻿using EscolaManager.Domain.Entities;
-using EscolaManager.Domain.Interface;
+using EscolaManager.Domain.Interfaces;
 using EscolaManager.Infrastructure.Data;
 
 namespace EscolaManager.Infrastructure.Repositories
