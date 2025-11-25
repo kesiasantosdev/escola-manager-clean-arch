@@ -10,21 +10,19 @@ namespace EscolaManager.Infrastructure.Data.Configurations
         {
             builder.ToTable("ProvaPerguntas");
 
-            // CHAVE COMPOSTA
             builder.HasKey(pp => new { pp.ProvaId, pp.PerguntaId });
 
-            // RELACIONAMENTO COM PROVA
             builder.HasOne(pp => pp.Prova)
-                   .WithMany(p => p.Questoes)
-                   .HasForeignKey(pp => pp.ProvaId);
+                .WithMany(p => p.Questoes)
+                .HasForeignKey(pp => pp.ProvaId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            // RELACIONAMENTO COM PERGUNTA
             builder.HasOne(pp => pp.Pergunta)
-                   .WithMany() // se quiser criar coleção do outro lado, mude aqui
-                   .HasForeignKey(pp => pp.PerguntaId);
+                .WithMany()
+                .HasForeignKey(pp => pp.PerguntaId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Property(pp => pp.Ordem)
-                   .IsRequired();
+            builder.Property(pp => pp.Ordem).IsRequired();
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EscolaManager.Infrastructure.Migrations
 {
     [DbContext(typeof(EscolaDbContext))]
-    [Migration("20251124134509_InitialCreate")]
+    [Migration("20251125151839_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace EscolaManager.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.0")
+                .HasAnnotation("ProductVersion", "9.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -60,7 +60,8 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<Guid>("UsuarioGestorId")
                         .HasColumnType("uniqueidentifier");
@@ -71,7 +72,7 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.HasIndex("UsuarioGestorId");
 
-                    b.ToTable("Bimestres");
+                    b.ToTable("Bimestres", (string)null);
                 });
 
             modelBuilder.Entity("EscolaManager.Domain.Entities.Cargo", b =>
@@ -103,15 +104,17 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.Property<string>("Cnpj")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(18)
+                        .HasColumnType("nvarchar(18)");
 
                     b.Property<string>("NomeEscola")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Escolas");
+                    b.ToTable("Escolas", (string)null);
                 });
 
             modelBuilder.Entity("EscolaManager.Domain.Entities.Pergunta", b =>
@@ -141,7 +144,7 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.HasIndex("TipoRespostaId");
 
-                    b.ToTable("Perguntas");
+                    b.ToTable("Perguntas", (string)null);
                 });
 
             modelBuilder.Entity("EscolaManager.Domain.Entities.Permissao", b =>
@@ -152,11 +155,12 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.Property<string>("NomePermissao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Permissoes");
+                    b.ToTable("Permissoes", (string)null);
                 });
 
             modelBuilder.Entity("EscolaManager.Domain.Entities.Pessoa", b =>
@@ -199,7 +203,8 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<Guid>("UsuarioCriadorId")
                         .HasColumnType("uniqueidentifier");
@@ -210,7 +215,7 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.HasIndex("UsuarioCriadorId");
 
-                    b.ToTable("Provas");
+                    b.ToTable("Provas", (string)null);
                 });
 
             modelBuilder.Entity("EscolaManager.Domain.Entities.ProvaPergunta", b =>
@@ -265,7 +270,7 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.HasIndex("ProvaId");
 
-                    b.ToTable("RealizacoesProvas");
+                    b.ToTable("RealizacoesProvas", (string)null);
                 });
 
             modelBuilder.Entity("EscolaManager.Domain.Entities.Resposta", b =>
@@ -284,7 +289,8 @@ namespace EscolaManager.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RespostaTexto")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
 
                     b.HasKey("Id");
 
@@ -292,7 +298,7 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.HasIndex("RealizacaoProvaId");
 
-                    b.ToTable("Respostas");
+                    b.ToTable("Respostas", (string)null);
                 });
 
             modelBuilder.Entity("EscolaManager.Domain.Entities.TipoPergunta", b =>
@@ -306,13 +312,14 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EscolaId");
 
-                    b.ToTable("TiposPerguntas");
+                    b.ToTable("TiposPerguntas", (string)null);
                 });
 
             modelBuilder.Entity("EscolaManager.Domain.Entities.TipoResposta", b =>
@@ -326,13 +333,14 @@ namespace EscolaManager.Infrastructure.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EscolaId");
 
-                    b.ToTable("TiposRespostas");
+                    b.ToTable("TiposRespostas", (string)null);
                 });
 
             modelBuilder.Entity("EscolaManager.Domain.Entities.Usuario", b =>
@@ -392,7 +400,7 @@ namespace EscolaManager.Infrastructure.Migrations
                     b.HasOne("EscolaManager.Domain.Entities.Usuario", "UsuarioGestor")
                         .WithMany()
                         .HasForeignKey("UsuarioGestorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Escola");
@@ -422,13 +430,13 @@ namespace EscolaManager.Infrastructure.Migrations
                     b.HasOne("EscolaManager.Domain.Entities.TipoPergunta", "TipoPergunta")
                         .WithMany()
                         .HasForeignKey("TipoPerguntaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EscolaManager.Domain.Entities.TipoResposta", "TipoResposta")
                         .WithMany()
                         .HasForeignKey("TipoRespostaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Escola");
@@ -449,7 +457,7 @@ namespace EscolaManager.Infrastructure.Migrations
                     b.HasOne("EscolaManager.Domain.Entities.Usuario", "UsuarioCriador")
                         .WithMany()
                         .HasForeignKey("UsuarioCriadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Escola");
@@ -462,7 +470,7 @@ namespace EscolaManager.Infrastructure.Migrations
                     b.HasOne("EscolaManager.Domain.Entities.Pergunta", "Pergunta")
                         .WithMany()
                         .HasForeignKey("PerguntaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EscolaManager.Domain.Entities.Prova", "Prova")
@@ -481,25 +489,25 @@ namespace EscolaManager.Infrastructure.Migrations
                     b.HasOne("EscolaManager.Domain.Entities.Usuario", "Avaliado")
                         .WithMany()
                         .HasForeignKey("AvaliadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EscolaManager.Domain.Entities.Usuario", "Avaliador")
                         .WithMany()
                         .HasForeignKey("AvaliadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EscolaManager.Domain.Entities.Bimestre", "Bimestre")
                         .WithMany()
                         .HasForeignKey("BimestreId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EscolaManager.Domain.Entities.Prova", "Prova")
                         .WithMany()
                         .HasForeignKey("ProvaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Avaliado");
