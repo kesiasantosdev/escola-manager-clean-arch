@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -15,8 +16,8 @@ namespace EscolaManager.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NomeEscola = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Cnpj = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NomeEscola = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Cnpj = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,7 +29,7 @@ namespace EscolaManager.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NomePermissao = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NomePermissao = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,7 +74,7 @@ namespace EscolaManager.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     EscolaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -92,7 +93,7 @@ namespace EscolaManager.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     EscolaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -193,13 +194,13 @@ namespace EscolaManager.Infrastructure.Migrations
                         column: x => x.TipoPerguntaId,
                         principalTable: "TiposPerguntas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Perguntas_TiposRespostas_TipoRespostaId",
                         column: x => x.TipoRespostaId,
                         principalTable: "TiposRespostas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -207,7 +208,7 @@ namespace EscolaManager.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Titulo = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DataInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataFim = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EscolaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -228,7 +229,7 @@ namespace EscolaManager.Infrastructure.Migrations
                         column: x => x.UsuarioGestorId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -236,7 +237,7 @@ namespace EscolaManager.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Titulo = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     EscolaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UsuarioCriadorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -254,7 +255,7 @@ namespace EscolaManager.Infrastructure.Migrations
                         column: x => x.UsuarioCriadorId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -273,7 +274,7 @@ namespace EscolaManager.Infrastructure.Migrations
                         column: x => x.PerguntaId,
                         principalTable: "Perguntas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ProvaPerguntas_Provas_ProvaId",
                         column: x => x.ProvaId,
@@ -302,25 +303,25 @@ namespace EscolaManager.Infrastructure.Migrations
                         column: x => x.BimestreId,
                         principalTable: "Bimestres",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_RealizacoesProvas_Provas_ProvaId",
                         column: x => x.ProvaId,
                         principalTable: "Provas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_RealizacoesProvas_Usuarios_AvaliadoId",
                         column: x => x.AvaliadoId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_RealizacoesProvas_Usuarios_AvaliadorId",
                         column: x => x.AvaliadorId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -330,7 +331,7 @@ namespace EscolaManager.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RealizacaoProvaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PerguntaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RespostaTexto = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RespostaTexto = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true),
                     RespostaNota = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
