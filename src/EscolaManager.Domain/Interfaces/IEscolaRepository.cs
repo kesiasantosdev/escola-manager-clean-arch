@@ -1,4 +1,7 @@
 ﻿using EscolaManager.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EscolaManager.Domain.Interfaces
 {
@@ -9,5 +12,6 @@ namespace EscolaManager.Domain.Interfaces
         Task<IEnumerable<Escola>> ObterTodosAsync();
         Task AtualizarAsync(Escola escola);
         Task DeletarAsync(Escola escola);
+        Task<bool> ExistePeloCnpjAsync(string cnpj);
     }
 }

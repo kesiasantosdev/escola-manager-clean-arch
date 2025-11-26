@@ -1,5 +1,7 @@
 using EscolaManager.Application;
+using EscolaManager.Application.Behaviors;
 using EscolaManager.Infrastructure;
+using FluentValidation;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,8 +12,13 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddMediatR(cfg => 
 {
     // Usa o tipo de alguma classe na camada Application para obter o Assembly
-    cfg.RegisterServicesFromAssembly(typeof(ApplicationAssemblyReference).Assembly); 
+    cfg.RegisterServicesFromAssembly(typeof(ApplicationAssemblyReference).Assembly);
+
+    // Aqui ligamos o "Tubo de Validação"
+    cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
+
+builder.Services.AddValidatorsFromAssembly(typeof(ApplicationAssemblyReference).Assembly);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
