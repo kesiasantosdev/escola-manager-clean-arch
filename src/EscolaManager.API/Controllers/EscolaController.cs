@@ -1,4 +1,5 @@
-﻿using EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola;
+﻿using EscolaManager.Application.UseCases.Escolas.Commands.AlterarEscola;
+using EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola;
 using EscolaManager.Application.UseCases.Escolas.Queries.ObterEscolaPorId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,16 @@ namespace EscolaManager.API.Controllers
             }
 
             return Ok(escola);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Alterar(Guid id, AlterarEscolaCommand command)
+        {
+            command.Id = id;
+
+            await _mediator.Send(command);
+
+            return NoContent();
         }
     }
 }
