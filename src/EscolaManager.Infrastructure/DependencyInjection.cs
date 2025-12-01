@@ -1,6 +1,8 @@
-﻿using EscolaManager.Domain.Interfaces;
+﻿using EscolaManager.Application.Gateways;
+using EscolaManager.Domain.Interfaces;
 using EscolaManager.Infrastructure.Data;
 using EscolaManager.Infrastructure.Repositories;
+using EscolaManager.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,8 @@ namespace EscolaManager.Infrastructure
 
             services.AddScoped<IBimestreRepository, BimestreRepository>();
             services.AddScoped<IRealizacaoProvaRepository, RealizacaoProvaRepository>();
+
+            services.AddHttpClient<ICnpjService, BrasilApiService>();
 
             return services;
         }

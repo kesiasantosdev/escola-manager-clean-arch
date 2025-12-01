@@ -19,8 +19,4 @@
     <ProjectReference Include="..\EscolaManager.Infrastructure\EscolaManager.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

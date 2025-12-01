@@ -24,7 +24,7 @@ namespace EscolaManager.Infrastructure.Data.Configurations
             builder.HasOne(r => r.Avaliador)
                 .WithMany()
                 .HasForeignKey(r => r.AvaliadorId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(r => r.Avaliado)
                 .WithMany()

@@ -9,5 +9,6 @@ namespace EscolaManager.Domain.Interfaces
         Task<IEnumerable<Escola>> ObterTodosAsync();
         Task AtualizarAsync(Escola escola);
         Task DeletarAsync(Escola escola);
+        Task<bool> ExistePeloCnpjAsync(string cnpj);
     }
 }

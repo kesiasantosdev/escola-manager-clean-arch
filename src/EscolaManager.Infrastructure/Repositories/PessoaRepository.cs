@@ -1,11 +1,14 @@
 ﻿using EscolaManager.Domain.Entities;
 using EscolaManager.Domain.Interfaces;
 using EscolaManager.Infrastructure.Data;
+using EscolaManager.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 
-namespace EscolaManager.Infrastructure.Repositories
+public class PessoaRepository : Repository<Pessoa>, IPessoaRepository
 {
-    public class PessoaRepository : Repository<Pessoa>, IPessoaRepository
+    public PessoaRepository(EscolaDbContext context) : base(context) { }
+    public async Task<Pessoa?> ObterPorEmailAsync(string email)
     {
-        public PessoaRepository(EscolaDbContext context) : base(context) { }
+        return await _dbSet.FirstOrDefaultAsync(p => p.Email == email);
     }
 }
