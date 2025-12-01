@@ -1,9 +1,6 @@
 ﻿using EscolaManager.Domain.Entities;
 using EscolaManager.Domain.Interfaces;
 using MediatR;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola
 {
@@ -31,22 +28,32 @@ namespace EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola
             var escola = new Escola(
                 request.NomeEscola,
                 request.Cnpj,
-                null,
-                null,
-                null,
+                request.EmailEscola,
+                request.TelefoneEscola,
+                request.Cep,
                 request.Logradouro,
-                null,
-                null,
+                request.Numero,
+                request.Bairro,
                 request.Cidade,
                 request.Estado
             );
 
             await _escolaRepository.AdicionarAsync(escola);
 
-            var senhaSegura = $"HASH_SECRET_{request.SenhaInicialGerente}";
+            Pessoa gerente;
 
-            var gerente = new Pessoa(request.NomeGerente, request.EmailGerente, senhaSegura);
-            await _pessoaRepository.AdicionarAsync(gerente);
+            var pessoaExistente = await _pessoaRepository.ObterPorEmailAsync(request.EmailGerente);
+
+            if (pessoaExistente != null)
+            {
+                gerente = pessoaExistente;
+            }
+            else
+            {
+                var senhaSegura = $"HASH_{request.SenhaInicialGerente}";
+                gerente = new Pessoa(request.NomeGerente, request.EmailGerente, senhaSegura);
+                await _pessoaRepository.AdicionarAsync(gerente);
+            }
 
             var cargoGestao = new Cargo("Gestão", escola.Id);
             await _cargoRepository.AdicionarAsync(cargoGestao);

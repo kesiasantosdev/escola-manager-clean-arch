@@ -14,7 +14,7 @@ namespace EscolaManager.Infrastructure.Data.Configurations
             builder.Property(r => r.RespostaTexto).HasMaxLength(4000);
 
             builder.HasOne(r => r.RealizacaoProva)
-                .WithMany() 
+                .WithMany()
                 .HasForeignKey(r => r.RealizacaoProvaId)
                 .OnDelete(DeleteBehavior.Cascade);
         }

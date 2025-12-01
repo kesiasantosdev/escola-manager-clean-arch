@@ -2,7 +2,6 @@
 using EscolaManager.Domain.Interfaces;
 using EscolaManager.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore; // Necessário para o AnyAsync
-using System.Threading.Tasks;
 
 namespace EscolaManager.Infrastructure.Repositories
 {

@@ -21,7 +21,7 @@ namespace EscolaManager.Infrastructure.Data.Configurations
             builder.HasOne(p => p.TipoPergunta)
                 .WithMany()
                 .HasForeignKey(p => p.TipoPerguntaId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(p => p.TipoResposta)
                 .WithMany()

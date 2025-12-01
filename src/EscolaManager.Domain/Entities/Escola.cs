@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EscolaManager.Domain.Entities
+﻿namespace EscolaManager.Domain.Entities
 {
     public class Escola
     {
@@ -48,12 +46,25 @@ namespace EscolaManager.Domain.Entities
             Status = StatusEscola.Ativa;
         }
 
-        public void AtualizarDados(string nome, string? email, string? telefone, string? rua, string? cidade, string? estado)
+        public void AtualizarDados(
+            string nome,
+            string? email,
+            string? telefone,
+            string? cep,
+            string? rua,
+            string? numero,
+            string? bairro,
+            string? cidade,
+            string? estado)
         {
             if (!string.IsNullOrWhiteSpace(nome)) NomeEscola = nome;
+
             Email = email;
             Telefone = telefone;
+            Cep = cep;
             Rua = rua;
+            Numero = numero;
+            Bairro = bairro;
             Cidade = cidade;
             Estado = estado;
         }

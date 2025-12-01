@@ -1,4 +1,5 @@
-﻿using EscolaManager.Domain.Interfaces;
+﻿using EscolaManager.Application.Utils;
+using EscolaManager.Domain.Interfaces;
 using FluentValidation;
 
 namespace EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola
@@ -18,12 +19,14 @@ namespace EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola
             RuleFor(x => x.Cnpj)
                 .NotEmpty().WithMessage("CNPJ Obrigatório")
 
-                .Must(cnpj => cnpj?.Replace(".", "").Replace("-", "").Replace("/", "").Length == 14)
-                .WithMessage("O CNPJ deve conter 14 dígitos.")
+                .Must(cnpj => CnpjValidation.Validar(cnpj))
+                .WithMessage("CNPJ inválido (verifique os dígitos).")
 
                 .MustAsync(async (cnpj, cancellation) =>
                 {
-                    bool existe = await _escolaRepository.ExistePeloCnpjAsync(cnpj);
+                    var cnpjLimpo = cnpj?.Replace(".", "").Replace("-", "").Replace("/", "") ?? string.Empty;
+
+                    bool existe = await _escolaRepository.ExistePeloCnpjAsync(cnpjLimpo);
                     return !existe;
                 })
                 .WithMessage("Este CNPJ já está cadastrado.");

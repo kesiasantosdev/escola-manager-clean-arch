@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddInfrastructure(builder.Configuration);
 
-builder.Services.AddMediatR(cfg => 
+builder.Services.AddMediatR(cfg =>
 {
     // Usa o tipo de alguma classe na camada Application para obter o Assembly
     cfg.RegisterServicesFromAssembly(typeof(ApplicationAssemblyReference).Assembly);

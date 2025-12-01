@@ -1,7 +1,4 @@
 ﻿using EscolaManager.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace EscolaManager.Domain.Interfaces
 {
