@@ -57,18 +57,20 @@
             string? cidade,
             string? estado)
         {
-            if (!string.IsNullOrWhiteSpace(nome)) NomeEscola = nome;
+            if (!string.IsNullOrWhiteSpace(nome))
+                NomeEscola = nome;
 
-            Email = email;
-            Telefone = telefone;
-            Cep = cep;
-            Rua = rua;
-            Numero = numero;
-            Bairro = bairro;
-            Cidade = cidade;
-            Estado = estado;
+            Email = email ?? Email;
+            Telefone = telefone ?? Telefone;
+            Cep = cep ?? Cep;
+            Rua = rua ?? Rua;
+            Numero = numero ?? Numero;
+            Bairro = bairro ?? Bairro;
+            Cidade = cidade ?? Cidade;
+            Estado = estado ?? Estado;
         }
 
+        public void Cancelar() => Status = StatusEscola.Cancelada;
         public void Bloquear() => Status = StatusEscola.Bloqueada;
         public void Ativar() => Status = StatusEscola.Ativa;
 

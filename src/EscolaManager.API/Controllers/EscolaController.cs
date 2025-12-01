@@ -1,5 +1,9 @@
 ﻿using EscolaManager.Application.UseCases.Escolas.Commands.AlterarEscola;
+using EscolaManager.Application.UseCases.Escolas.Commands.AtivarEscola;
+using EscolaManager.Application.UseCases.Escolas.Commands.BloquearEscola;
+using EscolaManager.Application.UseCases.Escolas.Commands.CancelarEscola;
 using EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola;
+using EscolaManager.Application.UseCases.Escolas.Commands.DeletarEscola;
 using EscolaManager.Application.UseCases.Escolas.Queries.ObterEscolaPorId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -46,6 +50,36 @@ namespace EscolaManager.API.Controllers
 
             await _mediator.Send(command);
 
+            return NoContent();
+        }
+
+        [HttpPut("{id}/ativar")]
+        public async Task<IActionResult> Ativar(Guid id)
+        {
+            var command = new AtivarEscolaCommand(id);
+            await _mediator.Send(command);
+
+            return NoContent();
+        }
+
+        [HttpPut("{id}/bloquear")]
+        public async Task<IActionResult> Bloquear(Guid id)
+        {
+            await _mediator.Send(new BloquearEscolaCommand(id));
+            return NoContent();
+        }
+
+        [HttpPut("{id}/cancelar")]
+        public async Task<IActionResult> Cancelar(Guid id)
+        {
+            await _mediator.Send(new CancelarEscolaCommand(id));
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Deletar(Guid id)
+        {
+            await _mediator.Send(new DeletarEscolaCommand(id));
             return NoContent();
         }
     }

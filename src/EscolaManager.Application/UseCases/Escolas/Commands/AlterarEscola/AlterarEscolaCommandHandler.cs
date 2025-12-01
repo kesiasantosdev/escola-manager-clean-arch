@@ -1,8 +1,5 @@
 ﻿using EscolaManager.Domain.Interfaces;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
-using System;
 
 namespace EscolaManager.Application.UseCases.Escolas.Commands.AlterarEscola
 {
