@@ -21,7 +21,7 @@ namespace EscolaManager.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<T?> ObterPorIdAsync(Guid id)
+        public virtual async Task<T?> ObterPorIdAsync(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }

@@ -18,7 +18,17 @@ namespace EscolaManager.Application.UseCases.Escolas.Queries.ObterEscolaPorId
 
             if (escola == null) return null;
 
-            return EscolaViewModel.FromEntity(escola);
+            var gerente = await _repository.ObterResponsavelPelaEscolaAsync(request.Id);
+
+            var viewModel = EscolaViewModel.FromEntity(escola);
+
+            if (gerente != null && gerente.Pessoa != null)
+            {
+                viewModel.NomeGerente = gerente.Pessoa.NomePessoa;
+                viewModel.EmailGerente = gerente.Pessoa.Email;
+            }
+
+            return viewModel;
         }
     }
 }

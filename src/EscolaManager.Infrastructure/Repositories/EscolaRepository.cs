@@ -1,7 +1,7 @@
 ﻿using EscolaManager.Domain.Entities;
 using EscolaManager.Domain.Interfaces;
 using EscolaManager.Infrastructure.Data;
-using Microsoft.EntityFrameworkCore; // Necessário para o AnyAsync
+using Microsoft.EntityFrameworkCore;
 
 namespace EscolaManager.Infrastructure.Repositories
 {
@@ -14,6 +14,13 @@ namespace EscolaManager.Infrastructure.Repositories
         public async Task<bool> ExistePeloCnpjAsync(string cnpj)
         {
             return await _dbSet.AnyAsync(e => e.Cnpj == cnpj);
+        }
+
+        public async Task<Usuario?> ObterResponsavelPelaEscolaAsync(Guid escolaId)
+        {
+            return await _context.Set<Usuario>()
+                .Include(u => u.Pessoa)
+                .FirstOrDefaultAsync(u => u.EscolaId == escolaId);
         }
     }
 }

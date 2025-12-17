@@ -16,6 +16,11 @@ namespace EscolaManager.Application.UseCases.Escolas.Queries.ObterEscolaPorId
         string Status
     )
     {
+
+        public string? NomeGerente { get; set; }
+        public string? EmailGerente { get; set; }
+
+
         public static EscolaViewModel FromEntity(Escola escola)
         {
             return new EscolaViewModel(
