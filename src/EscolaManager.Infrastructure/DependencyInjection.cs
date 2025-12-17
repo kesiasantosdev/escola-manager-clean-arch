@@ -1,4 +1,6 @@
 ﻿using EscolaManager.Application.Gateways;
+using EscolaManager.Application.Interfaces;
+using EscolaManager.Application.Services;
 using EscolaManager.Domain.Interfaces;
 using EscolaManager.Infrastructure.Data;
 using EscolaManager.Infrastructure.Repositories;
@@ -33,6 +35,8 @@ namespace EscolaManager.Infrastructure
             services.AddScoped<IRealizacaoProvaRepository, RealizacaoProvaRepository>();
 
             services.AddHttpClient<ICnpjService, BrasilApiService>();
+            services.AddScoped<IPasswordService, PasswordService>();
+            services.AddScoped<ITokenService, TokenService>();
 
             return services;
         }

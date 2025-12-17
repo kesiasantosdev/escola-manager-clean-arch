@@ -6,7 +6,6 @@ namespace EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola
     {
         public string NomeEscola { get; set; } = string.Empty;
         public string Cnpj { get; set; } = string.Empty;
-
         public string? EmailEscola { get; set; }
         public string? TelefoneEscola { get; set; }
         public string? Cep { get; set; }
