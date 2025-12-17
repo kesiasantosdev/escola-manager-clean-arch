@@ -1,4 +1,5 @@
-﻿using EscolaManager.Domain.Entities;
+﻿using EscolaManager.Application.Services;
+using EscolaManager.Domain.Entities;
 using EscolaManager.Domain.Interfaces;
 using MediatR;
 
@@ -10,17 +11,20 @@ namespace EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola
         private readonly IPessoaRepository _pessoaRepository;
         private readonly ICargoRepository _cargoRepository;
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IPasswordService _passwordService;
 
         public CriarEscolaCommandHandler(
             IEscolaRepository escolaRepository,
             IPessoaRepository pessoaRepository,
             ICargoRepository cargoRepository,
-            IUsuarioRepository usuarioRepository)
+            IUsuarioRepository usuarioRepository,
+            IPasswordService passwordService)
         {
             _escolaRepository = escolaRepository;
             _pessoaRepository = pessoaRepository;
             _cargoRepository = cargoRepository;
             _usuarioRepository = usuarioRepository;
+            _passwordService = passwordService;
         }
 
         public async Task<Guid> Handle(CriarEscolaCommand request, CancellationToken cancellationToken)
@@ -50,8 +54,8 @@ namespace EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola
             }
             else
             {
-                var senhaSegura = $"HASH_{request.SenhaInicialGerente}";
-                gerente = new Pessoa(request.NomeGerente, request.EmailGerente, senhaSegura);
+                var senhaCriptografada = _passwordService.Hash(request.SenhaInicialGerente);
+                gerente = new Pessoa(request.NomeGerente, request.EmailGerente, senhaCriptografada);
                 await _pessoaRepository.AdicionarAsync(gerente);
             }
 
