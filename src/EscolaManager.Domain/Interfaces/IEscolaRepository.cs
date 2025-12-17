@@ -10,5 +10,6 @@ namespace EscolaManager.Domain.Interfaces
         Task AtualizarAsync(Escola escola);
         Task DeletarAsync(Escola escola);
         Task<bool> ExistePeloCnpjAsync(string cnpj);
+        Task<Usuario?> ObterResponsavelPelaEscolaAsync(Guid escolaId);
     }
 }

@@ -11,7 +11,6 @@
         public virtual Usuario? Avaliador { get; private set; }
         public Guid AvaliadoId { get; private set; }
         public virtual Usuario? Avaliado { get; private set; }
-
         public TipoRelacao TipoRelacao { get; private set; }
         public StatusRealizacao Status { get; private set; }
 

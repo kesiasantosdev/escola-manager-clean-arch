@@ -4,14 +4,18 @@ using EscolaManager.Application.UseCases.Escolas.Commands.BloquearEscola;
 using EscolaManager.Application.UseCases.Escolas.Commands.CancelarEscola;
 using EscolaManager.Application.UseCases.Escolas.Commands.CriarEscola;
 using EscolaManager.Application.UseCases.Escolas.Commands.DeletarEscola;
+using EscolaManager.Application.UseCases.Escolas.Queries.ObterDashboardStats;
 using EscolaManager.Application.UseCases.Escolas.Queries.ObterEscolaPorId;
+using EscolaManager.Application.UseCases.Escolas.Queries.ObterTodasEscolas;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EscolaManager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EscolaController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -21,6 +25,7 @@ namespace EscolaManager.API.Controllers
             _mediator = mediator;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Criar(CriarEscolaCommand command)
         {
@@ -41,6 +46,23 @@ namespace EscolaManager.API.Controllers
             }
 
             return Ok(escola);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ObterTodas()
+        {
+            var query = new ObterTodasEscolasQuery();
+            var escolas = await _mediator.Send(query);
+
+            return Ok(escolas);
+        }
+
+        [HttpGet("dashboard-stats")]
+        public async Task<IActionResult> ObterEstatisticas()
+        {
+            var resultado = await _mediator.Send(new ObterDashboardStatsQuery());
+
+            return Ok(resultado);
         }
 
         [HttpPut("{id}")]
