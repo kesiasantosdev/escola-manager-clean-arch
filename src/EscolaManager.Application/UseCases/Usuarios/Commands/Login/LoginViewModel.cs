@@ -4,6 +4,7 @@
         Guid UsuarioId,
         string Nome,
         string Email,
-        string Token
+        string Token,
+        string CargoNome
     );
 }

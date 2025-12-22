@@ -19,7 +19,6 @@ namespace EscolaManager.Infrastructure.Repositories
         public async Task<Usuario?> ObterResponsavelPelaEscolaAsync(Guid escolaId)
         {
             return await _context.Set<Usuario>()
-                .Include(u => u.Pessoa)
                 .FirstOrDefaultAsync(u => u.EscolaId == escolaId);
         }
     }

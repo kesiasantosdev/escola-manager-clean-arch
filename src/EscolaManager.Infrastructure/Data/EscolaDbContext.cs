@@ -11,7 +11,6 @@ namespace EscolaManager.Infrastructure.Data
         }
 
         public DbSet<Escola> Escolas { get; set; }
-        public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Permissao> Permissoes { get; set; }
