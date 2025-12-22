@@ -25,7 +25,7 @@ namespace EscolaManager.API.Controllers
             _mediator = mediator;
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Adm")]
         [HttpPost]
         public async Task<IActionResult> Criar(CriarEscolaCommand command)
         {
