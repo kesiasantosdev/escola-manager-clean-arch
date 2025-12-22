@@ -1,6 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <Compile Remove="UseCases\Cargo\**" />
+    <EmbeddedResource Remove="UseCases\Cargo\**" />
+    <None Remove="UseCases\Cargo\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EscolaManager.Domain\EscolaManager.Domain.csproj" />
   </ItemGroup>
 

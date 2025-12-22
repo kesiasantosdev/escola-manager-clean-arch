@@ -21,7 +21,6 @@ namespace EscolaManager.Infrastructure
                 options.UseSqlServer(connectionString));
 
             services.AddScoped<IEscolaRepository, EscolaRepository>();
-            services.AddScoped<IPessoaRepository, PessoaRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ICargoRepository, CargoRepository>();
             services.AddScoped<IPermissaoRepository, PermissaoRepository>();

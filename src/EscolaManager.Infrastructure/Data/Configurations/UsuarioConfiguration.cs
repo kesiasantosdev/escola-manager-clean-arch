@@ -13,11 +13,21 @@ namespace EscolaManager.Infrastructure.Data.Configurations
 
             // Configurando as Chaves Estrangeiras (FKs)
 
-            // 1. Usuario -> Pessoa
-            builder.HasOne(u => u.Pessoa)
-                .WithMany()
-                .HasForeignKey(u => u.PessoaId)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.Property(p => p.NomePessoa)
+                .HasMaxLength(200)
+                .IsRequired();
+
+            builder.Property(p => p.Email)
+                .HasMaxLength(200)
+                .IsRequired();
+
+
+            builder.HasIndex(p => p.Email)
+                .IsUnique();
+
+            builder.Property(p => p.SenhaHash)
+                .HasMaxLength(500)
+                .IsRequired();
 
             // 2. Usuario -> Escola
             builder.HasOne(u => u.Escola)

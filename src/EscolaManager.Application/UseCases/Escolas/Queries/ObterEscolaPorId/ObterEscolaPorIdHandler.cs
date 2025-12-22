@@ -22,10 +22,10 @@ namespace EscolaManager.Application.UseCases.Escolas.Queries.ObterEscolaPorId
 
             var viewModel = EscolaViewModel.FromEntity(escola);
 
-            if (gerente != null && gerente.Pessoa != null)
+            if (gerente != null)
             {
-                viewModel.NomeGerente = gerente.Pessoa.NomePessoa;
-                viewModel.EmailGerente = gerente.Pessoa.Email;
+                viewModel.NomeGerente = gerente.NomePessoa;
+                viewModel.EmailGerente = gerente.Email;
             }
 
             return viewModel;
