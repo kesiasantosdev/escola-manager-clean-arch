@@ -34,7 +34,7 @@ namespace EscolaManager.Application.UseCases.Usuarios.Commands.Login
 
             var token = _tokenService.GerarToken(usuario, usuario.Cargo?.NomeCargo ?? "Sem Cargo", usuario.Email);
 
-            return new LoginViewModel(usuario.Id, usuario.NomePessoa, usuario.Email, token, usuario.Cargo?.NomeCargo ?? "Sem Cargo");
+            return new LoginViewModel(usuario.Id, usuario.EscolaId, usuario.NomePessoa, usuario.Email, token, usuario.Cargo?.NomeCargo ?? "Sem Cargo");
         }
     }
 }

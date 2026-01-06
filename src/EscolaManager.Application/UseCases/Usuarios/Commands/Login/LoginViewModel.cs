@@ -2,6 +2,7 @@
 {
     public record LoginViewModel(
         Guid UsuarioId,
+        Guid EscolaId,
         string Nome,
         string Email,
         string Token,
