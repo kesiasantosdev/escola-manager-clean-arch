@@ -12,7 +12,7 @@ namespace EscolaManager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+
     public class UsuarioController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -49,7 +49,7 @@ namespace EscolaManager.API.Controllers
                 return Unauthorized(ex.Message);
             }
         }
-        [Authorize(Roles = "Adm, Gerente")]
+        [Authorize(Roles = "Adm, Gestão")]
         [HttpPost]
         public async Task<IActionResult> Criar(CriarUsuarioCommand command)
         {
