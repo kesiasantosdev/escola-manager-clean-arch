@@ -1,7 +1,7 @@
 ﻿using EscolaManager.Application.UseCases.Cargos.Commands.CriarCargos;
 using EscolaManager.Domain.Interfaces;
-using Entities = EscolaManager.Domain.Entities;
 using MediatR;
+using Entities = EscolaManager.Domain.Entities;
 
 namespace EscolaManager.Application.UseCases.Cargos.Command.CriarCargos
 {
