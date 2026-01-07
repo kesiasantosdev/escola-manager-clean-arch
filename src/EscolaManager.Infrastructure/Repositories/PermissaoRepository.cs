@@ -5,26 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EscolaManager.Infrastructure.Repositories
 {
-    public class PermissaoRepository : IPermissaoRepository
+    public class PermissaoRepository : Repository<Permissao>, IPermissaoRepository
     {
-        private readonly EscolaDbContext _context;
-
-        public PermissaoRepository(EscolaDbContext context)
-        {
-            _context = context;
-        }
-
-        public async Task AdicionarAsync(Permissao permissao)
-        {
-            await _context.Permissoes.AddAsync(permissao);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<Permissao>> ObterTodosAsync()
-        {
-            return await _context.Permissoes
-                                 .AsNoTracking()
-                                 .ToListAsync();
-        }
-    }
+        public PermissaoRepository(EscolaDbContext context) : base(context) { }
+    }                     
+        
+    
 }

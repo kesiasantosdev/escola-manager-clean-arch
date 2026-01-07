@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("PermitirVue",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173") // O endereço do seu Front-end
+            policy.WithOrigins("http://localhost:5173")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
@@ -24,10 +24,8 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddMediatR(cfg =>
 {
-    // Usa o tipo de alguma classe na camada Application para obter o Assembly
     cfg.RegisterServicesFromAssembly(typeof(ApplicationAssemblyReference).Assembly);
 
-    // Aqui ligamos o "Tubo de Validação"
     cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
 
@@ -42,11 +40,10 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuer = false, // Em dev pode ser false
+        ValidateIssuer = false,
         ValidateAudience = false,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        // IMPORTANTE: A chave secreta tem que ser a mesma que você usou para GERAR o token no login
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MinhaChaveSuperSecretaDoSistemaEscolaManager123"))
     };
 });
