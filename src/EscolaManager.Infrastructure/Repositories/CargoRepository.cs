@@ -16,5 +16,13 @@ namespace EscolaManager.Infrastructure.Repositories
                                  .Where(c => c.EscolaId == escolaId)
                                  .ToListAsync();
         }
+
+        public async Task<Cargo?> ObterCargoPorId(Guid id)
+        {
+            return await _context.Cargos
+                           .Include(p => p.Permissoes)
+                           .Where(p => p.Id == id)
+                           .FirstOrDefaultAsync();
+        }
     }
 }
