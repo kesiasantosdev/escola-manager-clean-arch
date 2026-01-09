@@ -2,7 +2,7 @@
 using EscolaManager.Domain.Interfaces;
 using MediatR;
 
-namespace EscolaManager.Application.UseCases.Usuarios.Commands.AtualizarPessoa
+namespace EscolaManager.Application.UseCases.Usuarios.Commands.AtualizarUsuario
 {
     public class AtualizarUsuarioCommandHandler : IRequestHandler<AtualizarUsuarioCommand, bool>
     {

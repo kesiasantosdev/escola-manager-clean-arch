@@ -17,7 +17,7 @@ namespace EscolaManager.Application.UseCases.Permissoes.Command.AtribuirPermisso
         public async Task<Guid> Handle(AtribuirPermissaoCommand request, CancellationToken cancellationToken)
         {
             var cargo = await _cargoRepository.ObterPorIdAsync(request.CargoId);
-            var permissao = await _permissaoRepository.ObterPorIdAsync(request.PermissoesId);
+            var permissao = await _permissaoRepository.ObterPorIdAsync(request.PermissaoId);
 
             if (cargo == null || permissao == null)
             {

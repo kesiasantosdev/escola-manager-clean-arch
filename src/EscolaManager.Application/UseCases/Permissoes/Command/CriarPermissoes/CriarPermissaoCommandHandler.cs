@@ -4,16 +4,16 @@ using MediatR;
 
 namespace EscolaManager.Application.UseCases.Permissoes.Command.CriarPermissoes
 {
-    public class CriarPermissoesCommandHandler : IRequestHandler<CriarPermissoesCommand, Guid>
+    public class CriarPermissaoCommandHandler : IRequestHandler<CriarPermissaoCommand, Guid>
     {
         private readonly IPermissaoRepository _permissaoRepository;
 
-        public CriarPermissoesCommandHandler(IPermissaoRepository permissaoRepository)
+        public CriarPermissaoCommandHandler(IPermissaoRepository permissaoRepository)
         {
             _permissaoRepository = permissaoRepository;
         }
 
-        public async Task<Guid> Handle(CriarPermissoesCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CriarPermissaoCommand request, CancellationToken cancellationToken)
         {
             var novaPermissao = new Permissao(request.NomePermissao);
 

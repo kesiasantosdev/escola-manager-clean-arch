@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Text.Json.Serialization;
 
-namespace EscolaManager.Application.UseCases.Usuarios.Commands.AtualizarPessoa
+namespace EscolaManager.Application.UseCases.Usuarios.Commands.AtualizarUsuario
 {
     public class AtualizarUsuarioCommand : IRequest<bool>
     {

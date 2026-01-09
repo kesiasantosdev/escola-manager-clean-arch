@@ -5,6 +5,6 @@ namespace EscolaManager.Application.UseCases.Permissoes.Command.AtribuirPermisso
     public class AtribuirPermissaoCommand : IRequest<Guid>
     {
         public Guid CargoId { get; set; }
-        public Guid PermissoesId { get; set; }
+        public Guid PermissaoId { get; set; }
     }
 }
