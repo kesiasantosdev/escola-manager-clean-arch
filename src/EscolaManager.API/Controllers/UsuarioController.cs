@@ -1,4 +1,4 @@
-﻿using EscolaManager.Application.UseCases.Usuarios.Commands.AtualizarPessoa;
+﻿using EscolaManager.Application.UseCases.Usuarios.Commands.AtualizarUsuario;
 using EscolaManager.Application.UseCases.Usuarios.Commands.CriarUsuario;
 using EscolaManager.Application.UseCases.Usuarios.Commands.DeletarUsuario;
 using EscolaManager.Application.UseCases.Usuarios.Commands.Login;

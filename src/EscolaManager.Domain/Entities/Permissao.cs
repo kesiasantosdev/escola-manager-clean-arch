@@ -14,6 +14,14 @@
             NomePermissao = nomePermissao;
         }
 
+        public void AlterarNome(string novaPermissao)
+        {
+            if (string.IsNullOrWhiteSpace(novaPermissao))
+                throw new ArgumentException("O nome não pode ser vazio.", nameof(novaPermissao));
+
+            NomePermissao = novaPermissao;
+        }
+
         protected Permissao()
         {
             NomePermissao = string.Empty;

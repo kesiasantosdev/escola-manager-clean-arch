@@ -25,6 +25,10 @@ namespace EscolaManager.Infrastructure.Data.Configurations
             builder.HasMany(c => c.Permissoes)
                 .WithMany()
                 .UsingEntity(j => j.ToTable("CargoPermissoes"));
+
+            builder.Navigation(c => c.Permissoes)
+                .HasField("_permissoes")
+                .UsePropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }
