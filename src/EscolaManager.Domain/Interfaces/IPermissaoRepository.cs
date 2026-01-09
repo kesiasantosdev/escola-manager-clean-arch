@@ -8,5 +8,6 @@ namespace EscolaManager.Domain.Interfaces
         Task<Permissao?> ObterPorIdAsync(Guid id);
         Task<IEnumerable<Permissao>> ObterTodosAsync();
         Task AtualizarAsync(Permissao permissao);
+        Task DeletarAsync(Permissao permissao);
     }
 }
